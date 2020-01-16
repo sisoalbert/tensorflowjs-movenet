@@ -39,7 +39,13 @@ function handleClick(event) {
   // different image data each time. This returns a promise
   // which we wait to complete and then call a function to
   // print out the results of the prediction.
-  model.classify(event.target).then(function (predictions) {
-    console.log(predictions);
-  });
+  
+  tf.browser.fromPixels(event.target);
+  
+  console.log(event.target instanceof HTMLImageElement);
+  
+      model.classify(event.target).then(function (predictions) {
+      console.log(predictions);
+    });
+
 }
