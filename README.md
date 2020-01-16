@@ -38,6 +38,10 @@ Finally you will see that we pull in the MobileNet class we later use in script.
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"></script>
 ```
 
+### ← style.css
+
+Nothing to see here. Just styles to make the demo look prettier. You can use or ignore these as you please.
+
 ### ← script.js
 
 This file shows the demo code you need to write in JavaScript to interact with the MobileNet class we imported in the HTML. This is where the magic happens. We can pass data to the class and then retrive predictions on what it thinks it saw in the image which we can then use to make a decision. The file is well commented so do read the comments to learn more.

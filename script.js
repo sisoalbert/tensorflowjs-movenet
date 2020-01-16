@@ -35,8 +35,11 @@ for (let i = 0; i < images.length; i++) {
 
 // When an image is clicked, let's classify it and display results!
 function handleClick(event) {
+  // We can call model.classify as many times as we like with
+  // different image data each time. This returns a promise
+  // which we wait to complete and then call a function to
+  // print out the results of the prediction.
   model.classify(event.target).then(function (predictions) {
-    console.log('Predictions: ');
     console.log(predictions);
   });
 }
