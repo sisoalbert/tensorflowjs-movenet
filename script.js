@@ -39,13 +39,18 @@ function handleClick(event) {
   // different image data each time. This returns a promise
   // which we wait to complete and then call a function to
   // print out the results of the prediction.
-  
-  tf.browser.fromPixels(event.target);
-  
-  console.log(event.target instanceof HTMLImageElement);
-  
-      model.classify(event.target).then(function (predictions) {
+   model.classify(document.getElementsByTagName('img')[0]).then(function (predictions) {
       console.log(predictions);
     });
+  
+  const img = document.createElement('img');
+  img.crossOrigin = 'Anonymous';
+  img.src = event.target.getAttribute('src');
+  
+  img.addEventListener('load', function() {
+    model.classify(img).then(function (predictions) {
+      console.log(predictions);
+    });
+  });
 
 }
