@@ -23,7 +23,9 @@ em {
 .classifyOnClick {
   position: relative;
   float: left;
-  width: 50%;
+  width: 48%;
+  margin: 2% 1%;
+  cursor: pointer;
 }
 
 .classifyOnClick p {
@@ -33,4 +35,6 @@ em {
   padding: 5px;
   background-color: #FF6F00;
   color: #FFF;
+  border: 1px dashed rgba(255, 255, 255, 0.7);
+  margin: 0 0 10px 0;
 }

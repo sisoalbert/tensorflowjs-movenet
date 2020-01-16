@@ -54,3 +54,22 @@ function handleClick(event) {
     event.target.parentNode.appendChild(p);
   });
 }
+
+
+
+/********************************************************************
+// Demo 2: Continuously grab image from webcam stream and classify it.
+// Note:  YOU 
+********************************************************************/
+
+// Check if webcam access is supported.
+function hasGetUserMedia() {
+  return !!(navigator.mediaDevices &&
+    navigator.mediaDevices.getUserMedia);
+}
+
+if (hasGetUserMedia()) {
+  // Good to go!
+} else {
+  alert('getUserMedia() is not supported by your browser');
+}
