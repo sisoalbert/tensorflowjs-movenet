@@ -1,5 +1,5 @@
 /********************************************************************
-// Created by Jason Mayes 2020.
+// Demo created by Jason Mayes 2020.
 // Got questions? Reach out to me on social:
 // Twitter: @jason_mayes
 // LinkedIn: https://www.linkedin.com/in/creativetech
@@ -35,14 +35,22 @@ for (let i = 0; i < images.length; i++) {
 
 // When an image is clicked, let's classify it and display results!
 function handleClick(event) {
+  if (!modelHasLoaded) {
+    return;
+  }
+  
   // We can call model.classify as many times as we like with
   // different image data each time. This returns a promise
   // which we wait to complete and then call a function to
   // print out the results of the prediction.
-   model.classify(document.getElementsByTagName('img')[0]).then(function (predictions) {
-      console.log(predictions);
-    });
   
+  // Possible BUG? This will throw tainted canvas error...
+   model.classify(event.target).then(function (predictions) {
+      console.log(predictions);
+   });
+  
+
+  // But this method works with the SAME image URL...
   const img = document.createElement('img');
   img.crossOrigin = 'Anonymous';
   img.src = event.target.getAttribute('src');
