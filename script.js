@@ -59,7 +59,8 @@ function handleClick(event) {
 
 /********************************************************************
 // Demo 2: Continuously grab image from webcam stream and classify it.
-// Note:  YOU 
+// Note: You must access the demo on https for this to work:
+// https://tensorflow-js-image-classification.glitch.me/
 ********************************************************************/
 
 // Check if webcam access is supported.
@@ -68,8 +69,26 @@ function hasGetUserMedia() {
     navigator.mediaDevices.getUserMedia);
 }
 
+
+// Enable the live webcam view and start classification.
+function enableCam() {
+  const constraints = {
+    video: true
+  };
+
+  const video = document.getElementById('webcam');
+
+  navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+    video.srcObject = stream;
+  });
+}
+
+
+// If webcam supported, add event listener to button for when user
+// wants to activate it.
 if (hasGetUserMedia()) {
-  // Good to go!
+  const enableWebcamButton = document.getElementById('webcamButton');
+  enableWebcamButton.addEventListener('click', enableCam);
 } else {
-  alert('getUserMedia() is not supported by your browser');
+  console.warn('getUserMedia() is not supported by your browser');
 }

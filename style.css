@@ -15,6 +15,11 @@ em {
   font-weight: bold;
 }
 
+video {
+  clear: both;
+  display: block;
+}
+
 .note {
   font-style: italic;
   font-size: 130%;
