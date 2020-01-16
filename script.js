@@ -47,10 +47,10 @@ function handleClick(event) {
     // Lets write the predictions to a new paragraph element and
     // add it to the DOM.
     const p = document.createElement('p');
-    p.innerText = predictions[0];
-    
-    console.log(predictions);
-    console.log(event);
+    p.innerText = 'We think this is a: ' + predictions[0].className 
+        + ' - with ' + Math.round(parseFloat(predictions[0].probability) * 100) 
+        + '% confidence.';
+
     event.target.parentNode.appendChild(p);
   });
 }

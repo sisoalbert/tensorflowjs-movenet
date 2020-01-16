@@ -19,3 +19,18 @@ em {
   font-style: italic;
   font-size: 130%;
 }
+
+.classifyOnClick {
+  position: relative;
+  float: left;
+  width: 50%;
+}
+
+.classifyOnClick p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 5px;
+  background-color: #ffff00;
+  color: #fff;
+}
