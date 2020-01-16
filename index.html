@@ -11,9 +11,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
   </head>  
   <body>
-    <h1>Classifying images using MobileNet in TensorFlow.js</h1>
+    <h1>Classifying images using a pre made MobileNet in TensorFlow.js</h1>
     
-    <p>This demo page shows how we can take a pretrained model created by the TensorFlow.js team, in this case one called MobileNet, so that we can use it to find what object maybe in an image. MobileNet has been trained to detect a number of objects. If what you want to recognize is in that list of things it knows about, this may be useful to you. If you want to train a system to recognize your own objects, then check out our tutorials on transfer learning.</p>
+    <h2>Difficulty: Easy</h2>
+    
+    <p>This demo page shows how we can take a pretrained machine learning model created by the TensorFlow.js team, in this case one called MobileNet, to <a href="https://github.com/tensorflow/tfjs-models/blob/master/mobilenet/src/imagenet_classes.ts">recognize 1000 common objects</a> it has already been taught from the <a href="http://image-net.org/">ImageNet data set</a>.
+    </p>
+    <p>If what you want to recognize is in that list of things it knows about, this may be useful to you. If you want to train a system to recognize your own objects, then check out our tutorials on transfer learning.</p>
 
     <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
