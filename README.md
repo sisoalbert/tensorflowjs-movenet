@@ -1,15 +1,18 @@
-TensorFlow.js Boilerplate
-=================
+# Classifying images using a pre trained MobileNet in TensorFlow.js
 
-This very simple skeleton simply loads in TensorFlow.js and prints out the version once loaded to the DOM.
+Difficulty: Easy
 
-From these humble beginnings you can do some really great things. 
+Please note: This loads a nice easy to use JavaScript class made by the TensorFlow.js team to do the hardwork for you. No machine learning knowledge is needed.
 
-Feel free to fork this and use it as a quick way to start coding with TensorFlow.js directly or following some other tutorial that needs TensorFlow.js to run.
+If you were looking to learn how to load in a TensorFlow.js model directly yourself then please see our tutorial on loading TensorFlow.js models. If you want to train a system to recognize your own objects, using your own data, then check out our tutorials on "transfer learning".
 
+## What is this?
 
-Your Project
-------------
+This page shows how we can use a pre made machine learning solution to recognize objects in images on any image you wish to present to it. To do this we are using a model known as MobileNet, to recognize 1000 common objects it has already been taught from the ImageNet data set.
+
+If what you want to recognize is in that list of things it knows about, this may be useful to you as is, or just to experiment with Machine Learning in the browser and get familiar with ML.
+
+## Your Project
 
 ### ← index.html
 
@@ -31,5 +34,4 @@ However, if you want to pull in a particular version of TensorFlow.js you can do
 
 This simply grabs a reference to a paragraph in the DOM and then prints out the TensorFlow.js version number to it once loaded.
 
-
--------------------
+---
