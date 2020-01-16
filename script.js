@@ -22,15 +22,15 @@ mobilenet.load().then(function (loadedModel) {
 // upon click.
 ********************************************************************/
 
-// In this demo, we have tagged all our clickable images with the 
+// In this demo, we have put all our clickable images in divs with the 
 // CSS class 'classifyOnClick'. Lets get all the elements that have
 // this class.
-const images = document.getElementsByClassName('classifyOnClick');
+const imageContainers = document.getElementsByClassName('classifyOnClick');
 
-// Now let's go through all of these found images and add a click
-// event listener.
-for (let i = 0; i < images.length; i++) {
-  images[i].addEventListener('click', handleClick);
+// Now let's go through all of these and add a click event listener.
+for (let i = 0; i < imageContainers.length; i++) {
+  // Add event listener to the child element whichis the img element.
+  imageContainers[i].children[0].addEventListener('click', handleClick);
 }
 
 // When an image is clicked, let's classify it and display results!
@@ -43,11 +43,14 @@ function handleClick(event) {
   // different image data each time. This returns a promise
   // which we wait to complete and then call a function to
   // print out the results of the prediction.
-  
-  img.addEventListener('load', function() {
-    model.classify(img).then(function (predictions) {
-      console.log(predictions);
-    });
+  model.classify(event.target).then(function (predictions) {
+    // Lets write the predictions to a new paragraph element and
+    // add it to the DOM.
+    const p = document.createElement('p');
+    p.innerText = predictions[0];
+    
+    console.log(predictions);
+    console.log(event);
+    event.target.parentNode.appendChild(p);
   });
-
 }
