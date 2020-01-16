@@ -5,6 +5,9 @@
 // LinkedIn: https://www.linkedin.com/in/creativetech
 ********************************************************************/
 
+const video = document.getElementById('webcam');
+const webcamPredictions = document.getElementById('webcamPredictions');
+
 var modelHasLoaded = false;
 var model = undefined;
 
@@ -71,15 +74,36 @@ function hasGetUserMedia() {
 
 
 // Enable the live webcam view and start classification.
-function enableCam() {
+function enableCam(event) {
+  if (!modelHasLoaded) {
+    return;
+  }
+  
+  // Hide the button.
+  event.target.classList.add('removed');
+  
+  
+  
+  // getUsermedia parameters.
   const constraints = {
     video: true
   };
 
-  const video = document.getElementById('webcam');
-
+  // Activate the webcam stream.
   navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
     video.srcObject = stream;
+
+    // Now let's start classifying the stream.
+    model.classify(video).then(function (predictions) {
+      const p = document.createElement('p');
+      p.innerText = 'We think this is a: ' + predictions[0].className 
+          + ' - with ' + Math.round(parseFloat(predictions[0].probability) * 100) 
+          + '% confidence.';
+
+      video.parentNode.appendChild(p);
+    });
+    
+    
   });
 }
 

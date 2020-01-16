@@ -20,6 +20,10 @@ video {
   display: block;
 }
 
+.removed {
+  display: none;
+}
+
 .note {
   font-style: italic;
   font-size: 130%;
