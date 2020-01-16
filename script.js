@@ -17,8 +17,26 @@ mobilenet.load().then(function (loadedModel) {
 });
 
 
+/********************************************************************
+// Demo 1: Grab a bunch of images from the page and classify them
+// upon click.
+********************************************************************/
 
-model.classify(img).then(function (predictions) {
-  console.log('Predictions: ');
-  console.log(predictions);
-});
+// In this demo, we have tagged all our clickable images with the 
+// CSS class 'classifyOnClick'. Lets get all the elements that have
+// this class.
+const images = document.getElementsByClassName('classifyOnClick');
+
+// Now let's go through all of these found images and add a click
+// event listener.
+for (let i = 0; i < images.length; i++) {
+  images[i].addEventListener('click', handleClick);
+}
+
+// When an image is clicked, let's classify it and display results!
+function handleClick(event) {
+  model.classify(event.target).then(function (predictions) {
+    console.log('Predictions: ');
+    console.log(predictions);
+  });
+}
