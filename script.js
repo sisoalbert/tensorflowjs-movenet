@@ -1,2 +1,7 @@
-const status = document.getElementById('status');
-status.innerText = 'Loaded TensorFlow.js - version: ' + tf.version.tfjs;
+mobilenet.load().then(function (model) {
+  // Classify the image.
+  model.classify(img).then(function (predictions) {
+    console.log('Predictions: ');
+    console.log(predictions);
+  });
+});
