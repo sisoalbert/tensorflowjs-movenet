@@ -44,17 +44,6 @@ function handleClick(event) {
   // which we wait to complete and then call a function to
   // print out the results of the prediction.
   
-  // Possible BUG? This will throw tainted canvas error...
-   model.classify(event.target).then(function (predictions) {
-      console.log(predictions);
-   });
-  
-
-  // But this method works with the SAME image URL...
-  const img = document.createElement('img');
-  img.crossOrigin = 'Anonymous';
-  img.src = event.target.getAttribute('src');
-  
   img.addEventListener('load', function() {
     model.classify(img).then(function (predictions) {
       console.log(predictions);
