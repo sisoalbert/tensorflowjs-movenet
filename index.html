@@ -38,7 +38,7 @@
     
     
     <h2>Demo time: Webcam</h2>
-    <p>Hold some objects up to your webcam to get a real time classification! You must be on <a href="https://tensorflow-js-image-classification.glitch.me/">the https version of the website</a> for this to work. When ready click "enable webcam" below and accept access to the webcam when the browser asks (check the top left of your window)</p>
+    <p>Hold some objects up close to your webcam (avoid having lots of stuff in the shot at the same time for best results) to get a real time classification! You must be on <a href="https://tensorflow-js-image-classification.glitch.me/">the https version of the website</a> for this to work. When ready click "enable webcam" below and accept access to the webcam when the browser asks (check the top left of your window)</p>
     <button id="webcamButton">Enable Webcam</button>
     <video id="webcam" autoplay></video>
     <div id="webcamPredictions">
@@ -51,7 +51,7 @@
     <script src="https://button.glitch.me/button.js"></script>
     
     <!-- Import pre-trained MobileNet model so that we can recognize things in images  -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.0.4"></script>
     
     <!-- Import the page's JavaScript to do some stuff -->
     <script src="/script.js" defer></script>
