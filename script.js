@@ -46,13 +46,16 @@ function handleClick(event) {
   // different image data each time. This returns a promise
   // which we wait to complete and then call a function to
   // print out the results of the prediction.
-  model.classify(event.target).then(function (predictions) {
+  model.detect(event.target).then(function (predictions) {
     // Lets write the predictions to a new paragraph element and
     // add it to the DOM.
     const p = document.createElement('p');
-    p.innerText = 'We think this is a: ' + predictions[0].className 
-        + ' - with ' + Math.round(parseFloat(predictions[0].probability) * 100) 
+    p.innerText = 'We think this is a: ' + predictions[0].class 
+        + ' - with ' + Math.round(parseFloat(predictions[0].score) * 100) 
         + '% confidence.';
+    
+    const highlighter = document.createElement('div');
+    highlighter.setAttribute('class', 'highlighter');
 
     event.target.parentNode.appendChild(p);
   });
@@ -75,9 +78,9 @@ function hasGetUserMedia() {
 
 function predictWebcam() {
   // Now let's start classifying the stream.
-  model.classify(video).then(function (predictions) {
-    webcamPredictions.innerText = 'We think this is a: ' + predictions[0].className 
-        + ' - with ' + Math.round(parseFloat(predictions[0].probability) * 100) 
+  model.detect(video).then(function (predictions) {
+    webcamPredictions.innerText = 'We think this is a: ' + predictions[0].class 
+        + ' - with ' + Math.round(parseFloat(predictions[0].score) * 100) 
         + '% confidence.';
     // Call this function again to keep predicting when the browser is ready.
     window.requestAnimationFrame(predictWebcam);
