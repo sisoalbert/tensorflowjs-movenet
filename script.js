@@ -11,10 +11,10 @@ const webcamPredictions = document.getElementById('webcamPredictions');
 var modelHasLoaded = false;
 var model = undefined;
 
-// Before we can use MobileNet we must wait for it to finish loading. 
+// Before we can use COCO-SSD we must wait for it to finish loading. 
 // Machine Learning models can be large and take a moment to get 
 // everything they need to run.
-mobilenet.load().then(function (loadedModel) {
+cocoSsd.load().then(function (loadedModel) {
   model = loadedModel;
   modelHasLoaded = true;
 });
