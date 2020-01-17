@@ -7,6 +7,7 @@
 
 const video = document.getElementById('webcam');
 const webcamPredictions = document.getElementById('webcamPredictions');
+const demosSection = document.getElementById('demos');
 
 var modelHasLoaded = false;
 var model = undefined;
@@ -17,6 +18,8 @@ var model = undefined;
 cocoSsd.load().then(function (loadedModel) {
   model = loadedModel;
   modelHasLoaded = true;
+  // Show demo section now model is ready to use.
+  demosSection.classList.remove('invisible');
 });
 
 
@@ -89,6 +92,12 @@ function predictWebcam() {
           + ' - with ' + Math.round(parseFloat(predictions[0].score) * 100) 
           + '% confidence.';
     }
+    
+    highlighter.setAttribute('class', 'highlighter');
+    highlighter.style = 'left: ' + predictions[0].bbox[0] + 'px; top: '
+        + predictions[0].bbox[1] + 'px; width: ' 
+        + predictions[0].bbox[2] + 'px; height: '
+        + predictions[0].bbox[3] + 'px;';
     // Call this function again to keep predicting when the browser is ready.
     window.requestAnimationFrame(predictWebcam);
   });
