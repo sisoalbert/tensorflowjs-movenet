@@ -11,6 +11,10 @@ h1 {
   color: #FF6F00;
 }
 
+h2 {
+  clear: both;
+}
+
 em {
   font-weight: bold;
 }
@@ -56,6 +60,7 @@ section {
   border: 1px dashed rgba(255, 255, 255, 0.7);
   margin: 0 0 10px 0;
   z-index: 2;
+  font-size: 12px;
 }
 
 .highlighter {

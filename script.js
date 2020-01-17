@@ -52,18 +52,21 @@ function handleClick(event) {
   model.detect(event.target).then(function (predictions) {
     // Lets write the predictions to a new paragraph element and
     // add it to the DOM.
-    if (predictions.length > 0) {
+    for (let n = 0; n < predictions.length; n++) {
       const p = document.createElement('p');
-      p.innerText = 'We think this is a: ' + predictions[0].class 
-          + ' - with ' + Math.round(parseFloat(predictions[0].score) * 100) 
+      p.innerText = predictions[n].class  + ' - with ' 
+          + Math.round(parseFloat(predictions[n].score) * 100) 
           + '% confidence.';
+      p.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
+          + (predictions[n].bbox[1] - 10) + 'px; width: ' 
+          + (predictions[n].bbox[2] - 10) + 'px; height: auto;';
 
-      const highlighter = document.createElement('div');
+      const highlighter = document.createElement('p');
       highlighter.setAttribute('class', 'highlighter');
-      highlighter.style = 'left: ' + predictions[0].bbox[0] + 'px; top: '
-          + predictions[0].bbox[1] + 'px; width: ' 
-          + predictions[0].bbox[2] + 'px; height: '
-          + predictions[0].bbox[3] + 'px;';
+      highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
+          + predictions[n].bbox[1] + 'px; width: ' 
+          + predictions[n].bbox[2] + 'px; height: '
+          + predictions[n].bbox[3] + 'px;';
 
       event.target.parentNode.appendChild(highlighter);
       event.target.parentNode.appendChild(p);
