@@ -53,11 +53,16 @@ function handleClick(event) {
     p.innerText = 'We think this is a: ' + predictions[0].class 
         + ' - with ' + Math.round(parseFloat(predictions[0].score) * 100) 
         + '% confidence.';
-    
+    console.log(predictions[0].bbox)
     const highlighter = document.createElement('div');
     highlighter.setAttribute('class', 'highlighter');
+    highlighter.style = 'left: ' + predictions[0].bbox[0] + 'px; top: '
+        + predictions[0].bbox[1] + 'px; : ' 
+        + predictions[0].bbox[2] + 'px; height: '
+        + (predictions[0].bbox[3] - predictions[0].bbox[1]) + 'px;';
 
     event.target.parentNode.appendChild(p);
+    event.target.parentNode.appendChild(highlighter);
   });
 }
 
