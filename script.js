@@ -52,20 +52,22 @@ function handleClick(event) {
   model.detect(event.target).then(function (predictions) {
     // Lets write the predictions to a new paragraph element and
     // add it to the DOM.
-    const p = document.createElement('p');
-    p.innerText = 'We think this is a: ' + predictions[0].class 
-        + ' - with ' + Math.round(parseFloat(predictions[0].score) * 100) 
-        + '% confidence.';
+    if (predictions.length > 0) {
+      const p = document.createElement('p');
+      p.innerText = 'We think this is a: ' + predictions[0].class 
+          + ' - with ' + Math.round(parseFloat(predictions[0].score) * 100) 
+          + '% confidence.';
 
-    const highlighter = document.createElement('div');
-    highlighter.setAttribute('class', 'highlighter');
-    highlighter.style = 'left: ' + predictions[0].bbox[0] + 'px; top: '
-        + predictions[0].bbox[1] + 'px; width: ' 
-        + predictions[0].bbox[2] + 'px; height: '
-        + predictions[0].bbox[3] + 'px;';
+      const highlighter = document.createElement('div');
+      highlighter.setAttribute('class', 'highlighter');
+      highlighter.style = 'left: ' + predictions[0].bbox[0] + 'px; top: '
+          + predictions[0].bbox[1] + 'px; width: ' 
+          + predictions[0].bbox[2] + 'px; height: '
+          + predictions[0].bbox[3] + 'px;';
 
-    event.target.parentNode.appendChild(highlighter);
-    event.target.parentNode.appendChild(p);
+      event.target.parentNode.appendChild(highlighter);
+      event.target.parentNode.appendChild(p);
+    }
   });
 }
 
@@ -83,6 +85,7 @@ function hasGetUserMedia() {
     navigator.mediaDevices.getUserMedia);
 }
 
+const highlighterDiv = document.getElementById('highlighter');
 
 function predictWebcam() {
   // Now let's start classifying the stream.
@@ -93,8 +96,7 @@ function predictWebcam() {
           + '% confidence.';
     }
     
-    highlighter.setAttribute('class', 'highlighter');
-    highlighter.style = 'left: ' + predictions[0].bbox[0] + 'px; top: '
+    highlighterDiv.style = 'left: ' + predictions[0].bbox[0] + 'px; top: '
         + predictions[0].bbox[1] + 'px; width: ' 
         + predictions[0].bbox[2] + 'px; height: '
         + predictions[0].bbox[3] + 'px;';
