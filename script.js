@@ -73,6 +73,17 @@ function hasGetUserMedia() {
 }
 
 
+function predictWebcam() {
+  // Now let's start classifying the stream.
+  model.classify(video).then(function (predictions) {
+    webcamPredictions.innerText = 'We think this is a: ' + predictions[0].className 
+        + ' - with ' + Math.round(parseFloat(predictions[0].probability) * 100) 
+        + '% confidence.';
+    predictWebcam();
+  });
+}
+
+
 // Enable the live webcam view and start classification.
 function enableCam(event) {
   if (!modelHasLoaded) {
@@ -80,9 +91,7 @@ function enableCam(event) {
   }
   
   // Hide the button.
-  event.target.classList.add('removed');
-  
-  
+  event.target.classList.add('removed');  
   
   // getUsermedia parameters.
   const constraints = {
@@ -92,18 +101,7 @@ function enableCam(event) {
   // Activate the webcam stream.
   navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
     video.srcObject = stream;
-
-    // Now let's start classifying the stream.
-    model.classify(video).then(function (predictions) {
-      const p = document.createElement('p');
-      p.innerText = 'We think this is a: ' + predictions[0].className 
-          + ' - with ' + Math.round(parseFloat(predictions[0].probability) * 100) 
-          + '% confidence.';
-
-      video.parentNode.appendChild(p);
-    });
-    
-    
+    video.addEventListener('loadeddata', predictWebcam);
   });
 }
 
