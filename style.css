@@ -29,6 +29,10 @@ section {
   transition: opacity 500ms ease-in-out;
 }
 
+header, footer {
+  clear: both;
+}
+
 .removed {
   display: none;
 }
