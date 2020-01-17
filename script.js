@@ -79,7 +79,8 @@ function predictWebcam() {
     webcamPredictions.innerText = 'We think this is a: ' + predictions[0].className 
         + ' - with ' + Math.round(parseFloat(predictions[0].probability) * 100) 
         + '% confidence.';
-    predictWebcam();
+    // Call this function again to keep predicting when the browser is ready.
+    window.requestAnimationFrame(predictWebcam);
   });
 }
 

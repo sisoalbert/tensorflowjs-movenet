@@ -10,7 +10,7 @@ If you want to train a system to recognize your own objects, using your own data
 
 ## What can this demo do?
 
-This demo shows how we can use a pre made machine learning solution to recognize objects in images (aka a binary image classifier) on any image you wish to present to it. To do this we are using a model known as MobileNet, to [recognize 1000 common objects](https://github.com/tensorflow/tfjs-models/blob/master/mobilenet/src/imagenet_classes.ts) it has already been taught to find from the [ImageNet data set](http://image-net.org/).
+This demo shows how we can use a pre made machine learning solution to recognize objects in images (aka a binary image classifier) on any image you wish to present to it. It should be noted that this model works best when a single item is in the image at a time. Busy images may not work so well. You may want to try our demo for Object Detection for that. For this demo we are using a model known as MobileNet, to [recognize 1000 common objects](https://github.com/tensorflow/tfjs-models/blob/master/mobilenet/src/imagenet_classes.ts) it has already been taught to find from the [ImageNet data set](http://image-net.org/).
 
 If what you want to recognize is in that list of things it knows about (for example a cat, dog, etc), this may be useful to you as is in your own projects, or just to experiment with Machine Learning in the browser and get familiar with the possibilties of machine learning.
 
