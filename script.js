@@ -57,11 +57,11 @@ function handleClick(event) {
       p.innerText = predictions[n].class  + ' - with ' 
           + Math.round(parseFloat(predictions[n].score) * 100) 
           + '% confidence.';
-      p.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
+      p.style = 'margin-left: ' + predictions[n].bbox[0] + 'px; margin-top: '
           + (predictions[n].bbox[1] - 10) + 'px; width: ' 
-          + (predictions[n].bbox[2] - 10) + 'px; height: auto;';
+          + (predictions[n].bbox[2] - 10) + 'px; top: 0; left: 0;';
 
-      const highlighter = document.createElement('p');
+      const highlighter = document.createElement('div');
       highlighter.setAttribute('class', 'highlighter');
       highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
           + predictions[n].bbox[1] + 'px; width: ' 
@@ -88,15 +88,27 @@ function hasGetUserMedia() {
     navigator.mediaDevices.getUserMedia);
 }
 
-const highlighterDiv = document.getElementById('highlighter');
-
 function predictWebcam() {
   // Now let's start classifying the stream.
   model.detect(video).then(function (predictions) {
-    if(predictions.length > 0) {
-      webcamPredictions.innerText = 'We think this is a: ' + predictions[0].class 
-          + ' - with ' + Math.round(parseFloat(predictions[0].score) * 100) 
+    for (let n = 0; n < predictions.length; n++) {
+      const p = document.createElement('p');
+      p.innerText = predictions[n].class  + ' - with ' 
+          + Math.round(parseFloat(predictions[n].score) * 100) 
           + '% confidence.';
+      p.style = 'margin-left: ' + predictions[n].bbox[0] + 'px; margin-top: '
+          + (predictions[n].bbox[1] - 10) + 'px; width: ' 
+          + (predictions[n].bbox[2] - 10) + 'px; top: 0; left: 0;';
+
+      const highlighter = document.createElement('div');
+      highlighter.setAttribute('class', 'highlighter');
+      highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
+          + predictions[n].bbox[1] + 'px; width: ' 
+          + predictions[n].bbox[2] + 'px; height: '
+          + predictions[n].bbox[3] + 'px;';
+
+      event.target.parentNode.appendChild(highlighter);
+      event.target.parentNode.appendChild(p);
     }
     
     highlighterDiv.style = 'left: ' + predictions[0].bbox[0] + 'px; top: '
