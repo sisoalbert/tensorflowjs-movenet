@@ -1,9 +1,10 @@
 /********************************************************************
-// Demo created by Jason Mayes 2020.
-// Got questions? Reach out to me on social:
-// Twitter: @jason_mayes
-// LinkedIn: https://www.linkedin.com/in/creativetech
-********************************************************************/
+ * Demo created by Jason Mayes 2020.
+ *
+ * Got questions? Reach out to me on social:
+ * Twitter: @jason_mayes
+ * LinkedIn: https://www.linkedin.com/in/creativetech
+ ********************************************************************/
 
 const video = document.getElementById('webcam');
 const liveView = document.getElementById('liveView');
