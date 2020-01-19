@@ -70,3 +70,7 @@ header, footer {
   z-index: 1;
   position: absolute;
 }
+
+.classifyOnClick {
+  z-index: 0;
+}
