@@ -13,9 +13,9 @@ const demosSection = document.getElementById('demos');
 var modelHasLoaded = false;
 var model = undefined;
 
-// Before we can use COCO-SSD we must wait for it to finish loading. 
-// Machine Learning models can be large and take a moment to get 
-// everything they need to run.
+// Before we can use COCO-SSD class we must wait for it to finish
+// loading. Machine Learning models can be large and take a moment to
+// get everything needed to run.
 cocoSsd.load().then(function (loadedModel) {
   model = loadedModel;
   modelHasLoaded = true;
