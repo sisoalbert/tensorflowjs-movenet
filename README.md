@@ -10,7 +10,7 @@ If you want to train a system to recognize your own objects, using your own data
 
 ## What can this demo do?
 
-This demo shows how we can use a pre made machine learning solution to recognize objects (yes, more than one at a time!) on any image you wish to present to it. Even better, not only do we know that the image contains an object, but we can also get the co-ordinates of the bounding box for each object it finds, which allows you to highlight the found object in the image. 
+This demo shows how we can use a pre made machine learning solution to recognize multiple objects (yes, more than one at a time!) on any image you wish to present to it. Even better, not only do we know that the image contains an object, but we can also get the co-ordinates of the bounding box for each object it finds, which allows you to highlight the found object in the image. 
 
 For this demo we are loading a model using the ImageNet-SSD architecture, to [recognize 90 common objects](https://github.com/tensorflow/tfjs-models/blob/master/coco-ssd/src/classes.ts) it has already been taught to find from the [COCO dataset](http://cocodataset.org/#home).
 
