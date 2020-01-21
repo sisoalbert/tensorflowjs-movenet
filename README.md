@@ -1,4 +1,4 @@
-# Multiple objects detection using pre trained model in TensorFlow.js
+# Multiple object detection using pre trained model in TensorFlow.js
 
 ## Difficulty: Easy
 
@@ -14,7 +14,7 @@ This demo shows how we can use a pre made machine learning solution to recognize
 
 For this demo we are loading a model using the ImageNet-SSD architecture, to [recognize 90 common objects](https://github.com/tensorflow/tfjs-models/blob/master/coco-ssd/src/classes.ts) it has already been taught to find from the [COCO dataset](http://cocodataset.org/#home).
 
-If what you want to recognize is in that list of things it knows about (for example a cat, dog, etc), this may be useful to you as is in your own projects, or just to experiment with Machine Learning in the browser and get familiar with the possibilties of machine learning. 
+If what you want to recognize is in that list of things it knows about (for example a cat, dog, etc), this may be useful to you as is in your own projects, or just to experiment with Machine Learning in the browser and get familiar with the possibilities of machine learning. 
 
 If you are feeling particularly confident you can check out our [GitHub documentation](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd) which goes into much more detail for customising various parameters to tailor performance to your needs.
 
