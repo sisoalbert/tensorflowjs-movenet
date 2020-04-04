@@ -70,6 +70,7 @@ function handleClick(event) {
   model.detect(event.target).then(function (predictions) {
     // Lets write the predictions to a new paragraph element and
     // add it to the DOM.
+    console.log(predictions);
     for (let n = 0; n < predictions.length; n++) {
       const p = document.createElement('p');
       p.innerText = predictions[n].class  + ' - with ' 
