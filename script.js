@@ -23,11 +23,12 @@
  * LinkedIn: https://www.linkedin.com/in/creativetech
  ********************************************************************/
 
-const video = document.getElementById('webcam');
-const liveView = document.getElementById('liveView');
 const demosSection = document.getElementById('demos');
 
-var modelHasLoaded = false;
+const video = document.getElementById('webcam');
+const liveView = document.getElementById('liveView');
+
+
 var model = undefined;
 
 // Before we can use COCO-SSD class we must wait for it to finish
@@ -35,7 +36,6 @@ var model = undefined;
 // get everything needed to run.
 cocoSsd.load().then(function (loadedModel) {
   model = loadedModel;
-  modelHasLoaded = true;
   // Show demo section now model is ready to use.
   demosSection.classList.remove('invisible');
 });
@@ -59,7 +59,7 @@ for (let i = 0; i < imageContainers.length; i++) {
 
 // When an image is clicked, let's classify it and display results!
 function handleClick(event) {
-  if (!modelHasLoaded) {
+  if (!model) {
     return;
   }
   
@@ -153,7 +153,7 @@ function predictWebcam() {
 
 // Enable the live webcam view and start classification.
 function enableCam(event) {
-  if (!modelHasLoaded) {
+  if (!model) {
     return;
   }
   
