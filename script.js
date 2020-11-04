@@ -28,20 +28,17 @@ const demosSection = document.getElementById('demos');
 const video = document.getElementById('webcam');
 const liveView = document.getElementById('liveView');
 
+
 var model = undefined;
 
-document.addEventListener('DOMContentLoaded', function(){
-  // Before we can use COCO-SSD class we must wait for it to finish
-  // loading. Machine Learning models can be large and take a moment to
-  // get everything needed to run.
-  cocoSsd.load().then(function (loadedModel) {
-    model = loadedModel;
-    // Show demo section now model is ready to use.
-    demosSection.classList.remove('invisible');
-  });
+// Before we can use COCO-SSD class we must wait for it to finish
+// loading. Machine Learning models can be large and take a moment to
+// get everything needed to run.
+cocoSsd.load().then(function (loadedModel) {
+  model = loadedModel;
+  // Show demo section now model is ready to use.
+  demosSection.classList.remove('invisible');
 });
-
-
 
 
 /********************************************************************
@@ -76,13 +73,16 @@ function handleClick(event) {
     // add it to the DOM.
     console.log(predictions);
     for (let n = 0; n < predictions.length; n++) {
+      // Description text
       const p = document.createElement('p');
       p.innerText = predictions[n].class  + ' - with ' 
           + Math.round(parseFloat(predictions[n].score) * 100) 
           + '% confidence.';
-      p.style = 'margin-left: ' + predictions[n].bbox[0] + 'px; margin-top: '
-          + (predictions[n].bbox[1] - 10) + 'px; width: ' 
-          + (predictions[n].bbox[2] - 10) + 'px; top: 0; left: 0;';
+      // Positioned at the bottom left of the bounding box.
+      // Height is whatever the text takes up.
+      p.style = 'left: ' + predictions[n].bbox[0] + 'px;' + 
+          'top: ' + (predictions[n].bbox[1] - 10) + 'px; ' + 
+          'width: ' + (predictions[n].bbox[2] - 10) + 'px; top: 0; left: 0;';
 
       const highlighter = document.createElement('div');
       highlighter.setAttribute('class', 'highlighter');
