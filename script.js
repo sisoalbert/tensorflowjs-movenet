@@ -28,17 +28,20 @@ const demosSection = document.getElementById('demos');
 const video = document.getElementById('webcam');
 const liveView = document.getElementById('liveView');
 
-
 var model = undefined;
 
-// Before we can use COCO-SSD class we must wait for it to finish
-// loading. Machine Learning models can be large and take a moment to
-// get everything needed to run.
-cocoSsd.load().then(function (loadedModel) {
-  model = loadedModel;
-  // Show demo section now model is ready to use.
-  demosSection.classList.remove('invisible');
+document.addEventListener('DOMContentLoaded', function(){
+  // Before we can use COCO-SSD class we must wait for it to finish
+  // loading. Machine Learning models can be large and take a moment to
+  // get everything needed to run.
+  cocoSsd.load().then(function (loadedModel) {
+    model = loadedModel;
+    // Show demo section now model is ready to use.
+    demosSection.classList.remove('invisible');
+  });
 });
+
+
 
 
 /********************************************************************
@@ -60,6 +63,7 @@ for (let i = 0; i < imageContainers.length; i++) {
 // When an image is clicked, let's classify it and display results!
 function handleClick(event) {
   if (!model) {
+    console.log('Wait for model to load before clicking!');
     return;
   }
   
