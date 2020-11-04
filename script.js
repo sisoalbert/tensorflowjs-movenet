@@ -25,10 +25,6 @@
 
 const demosSection = document.getElementById('demos');
 
-const video = document.getElementById('webcam');
-const liveView = document.getElementById('liveView');
-
-
 var model = undefined;
 
 // Before we can use COCO-SSD class we must wait for it to finish
@@ -78,18 +74,19 @@ function handleClick(event) {
       p.innerText = predictions[n].class  + ' - with ' 
           + Math.round(parseFloat(predictions[n].score) * 100) 
           + '% confidence.';
-      // Positioned at the bottom left of the bounding box.
+      // Positioned at the top left of the bounding box.
       // Height is whatever the text takes up.
+      // Width subtracts text padding in CSS so fits perfectly.
       p.style = 'left: ' + predictions[n].bbox[0] + 'px;' + 
-          'top: ' + (predictions[n].bbox[1] - 10) + 'px; ' + 
-          'width: ' + (predictions[n].bbox[2] - 10) + 'px; top: 0; left: 0;';
+          'top: ' + predictions[n].bbox[1] + 'px; ' + 
+          'width: ' + (predictions[n].bbox[2] - 10) + 'px;';
 
       const highlighter = document.createElement('div');
       highlighter.setAttribute('class', 'highlighter');
-      highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px; top: '
-          + predictions[n].bbox[1] + 'px; width: ' 
-          + predictions[n].bbox[2] + 'px; height: '
-          + predictions[n].bbox[3] + 'px;';
+      highlighter.style = 'left: ' + predictions[n].bbox[0] + 'px;' +
+          'top: ' + predictions[n].bbox[1] + 'px;' +
+          'width: ' + predictions[n].bbox[2] + 'px;' +
+          'height: ' + predictions[n].bbox[3] + 'px;';
 
       event.target.parentNode.appendChild(highlighter);
       event.target.parentNode.appendChild(p);
@@ -104,6 +101,9 @@ function handleClick(event) {
 // Note: You must access the demo on https for this to work:
 // https://tensorflow-js-image-classification.glitch.me/
 ********************************************************************/
+
+const video = document.getElementById('webcam');
+const liveView = document.getElementById('liveView');
 
 // Check if webcam access is supported.
 function hasGetUserMedia() {
@@ -158,6 +158,7 @@ function predictWebcam() {
 // Enable the live webcam view and start classification.
 function enableCam(event) {
   if (!model) {
+    console.log('Wait! Model not loaded yet.')
     return;
   }
   
