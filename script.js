@@ -75,15 +75,6 @@ async function loadAndRunModel() {
   ctx.fill();
 
   const inputSize = 192;
-  const arr = [
-    [
-      [
-        [0.08709511160850525, 0.49314209818840027, 0.5901185274124146],
-        [0.07062023133039474, 0.5149994492530823, 0.7489978075027466],
-        [0.07055883854627609, 0.4780544340610504, 0.5669557452201843],
-      ],
-    ],
-  ];
 
   let coordinates = [];
 
@@ -117,27 +108,6 @@ async function loadAndRunModel() {
     ctx.arc(newArr[i][0], newArr[i][1], 2, 0, 2 * Math.PI);
     ctx.fill();
   }
-
-  // // Draw a small circular point at x: 94, y: 15
-  // ctx.beginPath();
-  // ctx.arc(640, 15, 3, 0, 5 * Math.PI);
-  // ctx.fillStyle = "red";
-  // ctx.fill();
-
-  // const keypoints = arrayOutput;
-
-  // // Draw rectangles for the keypoints
-  // for (let i = 0; i < keypoints[0].length; i++) {
-  //   const keypoint = keypoints[0][i];
-  //   if (keypoint[2] > 0.5) {
-  //     ctx.fillRect(
-  //       keypoint[0] * canvas.width,
-  //       keypoint[1] * canvas.height,
-  //       5,
-  //       5
-  //     );
-  //   }
-  // }
 }
 
 loadAndRunModel();
