@@ -95,12 +95,12 @@ async function loadAndRunModel() {
 
   let newArr = [];
   for (let i = 0; i < coordinates.length; i++) {
-    console.log(coordinates[i][0] + Yd);
-    console.log(coordinates[i][1] + Xd);
+    // console.log(coordinates[i][0] + Yd);
+    // console.log(coordinates[i][1] + Xd);
 
     newArr.push([coordinates[i][1] + Xd, coordinates[i][0] + Yd]);
   }
-  console.log(newArr);
+  console.log("newArr", newArr);
 
   // Draw small circles at newArr points
   for (let i = 0; i < newArr.length; i++) {
